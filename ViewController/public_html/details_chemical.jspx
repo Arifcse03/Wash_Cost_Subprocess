@@ -1,0 +1,315 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:h="http://java.sun.com/jsf/html"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich">
+  <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+  <f:view>
+    <af:document id="d1">
+      <af:messages id="m1"/>
+      <af:form id="f1">
+        <af:panelCollection id="pc1">
+          <f:facet name="menus"/>
+          <f:facet name="toolbar">
+            <af:toolbar id="t2">
+              <af:commandButton id="cb2" icon="/add.jpg"
+                                shortDesc="Insert new data">
+                <af:showPopupBehavior popupId="::add"/>
+              </af:commandButton>
+              <af:commandButton actionListener="#{manageBean.callSave}"
+                                disabled="#{!bindings.Commit.enabled}"
+                                id="cb1" icon="/save.png"
+                                shortDesc="Save All data"/>
+              <af:commandButton id="cb4" icon="/back-button.png"
+                                action="*backhomePg"
+                                shortDesc="Go To home Page"/>
+            </af:toolbar>
+          </f:facet>
+          <f:facet name="statusbar"/>
+          <af:table value="#{bindings.XxOmWashCostChemicalTVO1.collectionModel}"
+                    var="row"
+                    rows="#{bindings.XxOmWashCostChemicalTVO1.rangeSize}"
+                    emptyText="#{bindings.XxOmWashCostChemicalTVO1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                    fetchSize="#{bindings.XxOmWashCostChemicalTVO1.rangeSize}"
+                    rowBandingInterval="0"
+                    filterModel="#{bindings.XxOmWashCostChemicalTVO1Query.queryDescriptor}"
+                    queryListener="#{bindings.XxOmWashCostChemicalTVO1Query.processQuery}"
+                    filterVisible="true" varStatus="vs"
+                    selectedRowKeys="#{bindings.XxOmWashCostChemicalTVO1.collectionModel.selectedRow}"
+                    selectionListener="#{bindings.XxOmWashCostChemicalTVO1.collectionModel.makeCurrent}" id="t1"
+                    partialTriggers="::cb4 cb6"
+                    rowSelection="single" editingMode="clickToEdit"
+                    inlineStyle="font-family:'Times New Roman', 'Arial Black', times, Serif; font-size:large;">
+            <af:column id="c14" headerText="Sr." align="left"
+                       sortable="true" filterable="true"
+                       inlineStyle="width:10%; font-family:'Times New Roman', 'Arial Black', times, Serif; color:Black;"
+                       width="45">
+              <af:outputText  value="#{vs.index+1}" id="ot13"/>
+            </af:column>
+            <af:column sortProperty="Id" filterable="true" sortable="true"
+                       headerText="#{bindings.XxOmWashCostChemicalTVO1.hints.Id.label}"
+                       id="c7" visible="false"
+                       inlineStyle="color:Black;">
+              <af:outputText value="#{row.Id}" id="ot7">
+                <af:convertNumber groupingUsed="false"
+                                  pattern="#{bindings.XxOmWashCostChemicalTVO1.hints.Id.format}"/>
+              </af:outputText>
+            </af:column>
+            <af:column sortProperty="SubProcessName" filterable="true"
+                       sortable="true"
+                       headerText="Sub Process Name"
+                       id="c12" align="center" width="180"
+                       inlineStyle="color:Black;">
+              <af:outputText value="#{row.SubProcessName}" id="ot5"/>
+            </af:column>
+            <af:column sortProperty="SubProcessId" filterable="true"
+                       sortable="true"
+                       headerText="#{bindings.XxOmWashCostChemicalTVO1.hints.SubProcessId.label}"
+                       id="c2" visible="false"
+                       inlineStyle="color:Black;">
+              <af:outputText value="#{row.SubProcessId}" id="ot9">
+                <af:convertNumber groupingUsed="false"
+                                  pattern="#{bindings.XxOmWashCostChemicalTVO1.hints.SubProcessId.format}"/>
+              </af:outputText>
+            </af:column>
+            <af:column sortProperty="ItemCode" filterable="true" sortable="true"
+                       headerText="Item Code"
+                       id="c8" align="center" width="150"
+                       inlineStyle="color:Black;">
+              <af:outputText value="#{row.ItemCode}" id="ot2"/>
+            </af:column>
+            <af:column sortProperty="ItemName" filterable="true" sortable="true"
+                       headerText="Item Name"
+                       id="c4" align="center" width="170"
+                       inlineStyle="color:Black;">
+              <af:outputText value="#{row.ItemName}" id="ot4"/>
+            </af:column>
+            <af:column sortProperty="Quantity" filterable="true" sortable="true"
+                       headerText="Quantity"
+                       id="c3" align="center" width="45"
+                       inlineStyle="color:Black;">
+              <af:outputText value="#{row.Quantity}" id="ot6">
+                <af:convertNumber groupingUsed="false"
+                                  pattern="#{bindings.XxOmWashCostChemicalTVO1.hints.Quantity.format}"
+                                  minFractionDigits="10"
+                                  maxFractionDigits="10"/>
+              </af:outputText>
+            </af:column>
+            <af:column sortProperty="ManualPrice" filterable="true"
+                       sortable="true" headerText="Manual Price" id="c10"
+                       align="center" width="80"
+                       inlineStyle="color:Black;">
+              <af:outputText value="#{row.ManualPrice}" id="ot3">
+                <af:convertNumber groupingUsed="false"
+                                  pattern="#{bindings.XxOmWashCostChemicalTVO1.hints.ManualPrice.format}"
+                                  minFractionDigits="5"
+                                  maxFractionDigits="5"/>
+              </af:outputText>
+            </af:column>
+            <af:column sortProperty="CreatedBy" filterable="true"
+                       sortable="true"
+                       headerText="Created By"
+                       id="c5" align="center" width="80"
+                       inlineStyle="color:Black;">
+              <af:outputText value="#{row.CreatedBy}" id="ot8">
+                <af:convertNumber groupingUsed="false"
+                                  pattern="#{bindings.XxOmWashCostChemicalTVO1.hints.CreatedBy.format}"/>
+              </af:outputText>
+            </af:column>
+            <af:column sortProperty="CreationDate" filterable="true"
+                       sortable="true"
+                       headerText="Creation Date"
+                       id="c6" align="center" width="80"
+                       inlineStyle="color:Black;">
+              <f:facet name="filter">
+                <af:inputDate value="#{vs.filterCriteria.CreationDate}"
+                              id="id2"/>
+              </f:facet>
+              <af:outputText value="#{row.CreationDate}" id="ot1">
+                <af:convertDateTime pattern="#{bindings.XxOmWashCostChemicalTVO1.hints.CreationDate.format}"/>
+              </af:outputText>
+            </af:column>
+            <af:column sortProperty="UpdatedBy" filterable="true"
+                       sortable="true"
+                       headerText="Updated By"
+                       id="c9"
+                       inlineStyle="color:Black;">
+              <af:outputText value="#{row.UpdatedBy}" id="ot11">
+                <af:convertNumber groupingUsed="false"
+                                  pattern="#{bindings.XxOmWashCostChemicalTVO1.hints.UpdatedBy.format}"/>
+              </af:outputText>
+            </af:column>
+            <af:column sortProperty="UpdatedDate" filterable="true"
+                       sortable="true"
+                       headerText="Updated Date"
+                       id="c1" align="center"
+                       inlineStyle="color:Black;">
+              <f:facet name="filter">
+                <af:inputDate value="#{vs.filterCriteria.UpdatedDate}"
+                              id="id1"/>
+              </f:facet>
+              <af:outputText value="#{row.UpdatedDate}" id="ot12">
+                <af:convertDateTime pattern="#{bindings.XxOmWashCostChemicalTVO1.hints.UpdatedDate.format}"/>
+              </af:outputText>
+            </af:column>
+            <af:column sortProperty="Test" filterable="true" sortable="true"
+                       headerText="#{bindings.XxOmWashCostChemicalTVO1.hints.Test.label}"
+                       id="c11" align="center"
+                       inlineStyle="color:Black;">
+              <af:outputText value="#{row.Test}" id="ot10">
+                <af:convertNumber groupingUsed="false"
+                                  pattern="#{bindings.XxOmWashCostChemicalTVO1.hints.Test.format}"/>
+              </af:outputText>
+            </af:column>
+            <af:column id="c13" headerText="Action" align="center"
+                       sortable="true" filterable="true" width="150"
+                       inlineStyle="color:Black;">
+              <af:panelGroupLayout id="pgl1" layout="horizontal">
+                <af:commandButton id="cb5" icon="/edit.png"
+                                  shortDesc="Edit The row value">
+                  <af:showPopupBehavior popupId=":::p1"/>
+                </af:commandButton>
+                <af:commandButton actionListener="#{bindings.Delete.execute}"
+                                  disabled="#{!bindings.Delete.enabled}"
+                                  id="cb6" icon="/delete-.png"
+                                  shortDesc="Delete The row value"/>
+              </af:panelGroupLayout>
+            </af:column>
+          </af:table>
+        </af:panelCollection>
+        <af:popup id="add" popupFetchListener="#{manageBean.OnCreate}"
+                  contentDelivery="lazyUncached">
+          <af:dialog id="d2"
+                     title="Insert New Data"
+                     inlineStyle="width:50.0px;"
+                     dialogListener="#{manageBean.ondialogOk}" type="none">
+            <af:panelFormLayout id="pfl1">
+              <af:inputListOfValues id="subProcessNameId"
+                                    popupTitle="Search and Select: #{bindings.SubProcessName.hints.label}"
+                                    value="#{bindings.SubProcessName.inputValue}"
+                                    label="Sub Process Name"
+                                    model="#{bindings.SubProcessName.listOfValuesModel}"
+                                    required="#{bindings.SubProcessName.hints.mandatory}"
+                                    columns="#{bindings.SubProcessName.hints.displayWidth}"
+                                    shortDesc="#{bindings.SubProcessName.hints.tooltip}">
+                <f:validator binding="#{bindings.SubProcessName.validator}"/>
+                <af:autoSuggestBehavior suggestedItems="#{bindings.SubProcessName.suggestedItems}"/>
+              </af:inputListOfValues>
+              <af:inputText value="#{bindings.SubProcessId.inputValue}"
+                            label="#{bindings.SubProcessId.hints.label}"
+                            required="#{bindings.SubProcessId.hints.mandatory}"
+                            columns="#{bindings.SubProcessId.hints.displayWidth}"
+                            maximumLength="#{bindings.SubProcessId.hints.precision}"
+                            shortDesc="#{bindings.SubProcessId.hints.tooltip}"
+                            partialTriggers="subProcessNameId" id="it1"
+                            visible="false">
+                <f:validator binding="#{bindings.SubProcessId.validator}"/>
+                <af:convertNumber groupingUsed="false"
+                                  pattern="#{bindings.SubProcessId.format}"/>
+              </af:inputText>
+              <af:inputListOfValues id="itemNameId"
+                                    popupTitle="Search and Select: #{bindings.ItemName.hints.label}"
+                                    value="#{bindings.ItemName.inputValue}"
+                                    label="Item Name"
+                                    model="#{bindings.ItemName.listOfValuesModel}"
+                                    required="#{bindings.ItemName.hints.mandatory}"
+                                    columns="#{bindings.ItemName.hints.displayWidth}"
+                                    shortDesc="#{bindings.ItemName.hints.tooltip}">
+                <f:validator binding="#{bindings.ItemName.validator}"/>
+                <af:autoSuggestBehavior suggestedItems="#{bindings.ItemName.suggestedItems}"/>
+              </af:inputListOfValues>
+              <af:inputText value="#{bindings.Quantity.inputValue}"
+                            label="#{bindings.Quantity.hints.label}"
+                            required="#{bindings.Quantity.hints.mandatory}"
+                            columns="#{bindings.Quantity.hints.displayWidth}"
+                            maximumLength="#{bindings.Quantity.hints.precision}"
+                            shortDesc="#{bindings.Quantity.hints.tooltip}"
+                            id="it2">
+                <f:validator binding="#{bindings.Quantity.validator}"/>
+                <af:convertNumber groupingUsed="false"
+                                  pattern="#{bindings.Quantity.format}"
+                                  minFractionDigits="10"
+                                  maxFractionDigits="10"/>
+              </af:inputText>
+              <af:inputText value="#{bindings.ManualPrice.inputValue}"
+                            label="Manual Price"
+                            required="#{bindings.ManualPrice.hints.mandatory}"
+                            columns="#{bindings.ManualPrice.hints.displayWidth}"
+                            maximumLength="#{bindings.ManualPrice.hints.precision}"
+                            shortDesc="#{bindings.ManualPrice.hints.tooltip}"
+                            id="it3" visible="false">
+                <f:validator binding="#{bindings.ManualPrice.validator}"/>
+                <af:convertNumber groupingUsed="false"
+                                  pattern="#{bindings.ManualPrice.format}"
+                                  minFractionDigits="5"
+                                  maxFractionDigits="5"/>
+              </af:inputText>
+              <af:spacer width="10" height="10" id="s1"/>
+              <af:commandButton id="cb3"
+                                actionListener="#{manageBean.callSave}"
+                                icon="/save.png"
+                                shortDesc="Save And Insert new record"/>
+            </af:panelFormLayout>
+          </af:dialog>
+        </af:popup>
+        <af:popup id="p1" contentDelivery="lazyUncached">
+          <af:dialog id="d3" type="none" title="Edit Your Data">
+            <af:panelFormLayout id="pfl2">
+              <af:inputListOfValues id="inputListOfValues1"
+                                    popupTitle="Search and Select: #{bindings.SubProcessName.hints.label}"
+                                    value="#{bindings.SubProcessName.inputValue}"
+                                    label="Sub Process Name"
+                                    model="#{bindings.SubProcessName.listOfValuesModel}"
+                                    required="#{bindings.SubProcessName.hints.mandatory}"
+                                    columns="#{bindings.SubProcessName.hints.displayWidth}"
+                                    shortDesc="#{bindings.SubProcessName.hints.tooltip}">
+                <f:validator binding="#{bindings.SubProcessName.validator}"/>
+                <af:autoSuggestBehavior suggestedItems="#{bindings.SubProcessName.suggestedItems}"/>
+              </af:inputListOfValues>
+              <af:inputListOfValues id="inputListOfValues2"
+                                    popupTitle="Search and Select: #{bindings.ItemName.hints.label}"
+                                    value="#{bindings.ItemName.inputValue}"
+                                    label="Item Name"
+                                    model="#{bindings.ItemName.listOfValuesModel}"
+                                    required="#{bindings.ItemName.hints.mandatory}"
+                                    columns="#{bindings.ItemName.hints.displayWidth}"
+                                    shortDesc="#{bindings.ItemName.hints.tooltip}">
+                <f:validator binding="#{bindings.ItemName.validator}"/>
+                <af:autoSuggestBehavior suggestedItems="#{bindings.ItemName.suggestedItems}"/>
+              </af:inputListOfValues>
+              <af:inputText value="#{bindings.Quantity.inputValue}"
+                            label="#{bindings.Quantity.hints.label}"
+                            required="#{bindings.Quantity.hints.mandatory}"
+                            columns="#{bindings.Quantity.hints.displayWidth}"
+                            maximumLength="#{bindings.Quantity.hints.precision}"
+                            shortDesc="#{bindings.Quantity.hints.tooltip}"
+                            id="it4">
+                <f:validator binding="#{bindings.Quantity.validator}"/>
+                <af:convertNumber groupingUsed="false"
+                                  pattern="#{bindings.Quantity.format}"
+                                  minFractionDigits="10"
+                                  maxFractionDigits="10"/>
+              </af:inputText>
+              <af:inputText value="#{bindings.ManualPrice.inputValue}"
+                            label="Manual Price"
+                            required="#{bindings.ManualPrice.hints.mandatory}"
+                            columns="#{bindings.ManualPrice.hints.displayWidth}"
+                            maximumLength="#{bindings.ManualPrice.hints.precision}"
+                            shortDesc="#{bindings.ManualPrice.hints.tooltip}"
+                            id="it5">
+                <f:validator binding="#{bindings.ManualPrice.validator}"/>
+                <af:convertNumber groupingUsed="false"
+                                  pattern="#{bindings.ManualPrice.format}"
+                                  minFractionDigits="5" maxFractionDigits="5"/>
+              </af:inputText>
+              <f:facet name="footer">
+                <af:commandButton text="Submit" id="cb7"
+                                  actionListener="#{manageBean.callSave}"/>
+              </f:facet>
+            </af:panelFormLayout>
+          </af:dialog>
+        </af:popup>
+      </af:form>
+    </af:document>
+  </f:view>
+</jsp:root>

@@ -1,0 +1,87 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:h="http://java.sun.com/jsf/html"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich">
+  <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+  <f:view>
+    <af:document id="d1">
+      <af:messages id="m1"/>
+      <af:form id="f1">
+        <af:panelHeader text="Insert OM Wash Sub Process Data" id="ph1"
+                        inlineStyle="height:65px; margin:20px;">
+          <f:facet name="context"/>
+          <f:facet name="menuBar"/>
+          <f:facet name="toolbar">
+            <af:commandButton text="Back To View Data" id="cb2"
+                              action="goToViewData"/>
+          </f:facet>
+          <f:facet name="legend"/>
+          <f:facet name="info"/>
+        </af:panelHeader>
+        <af:panelFormLayout id="pfl1">
+          <af:panelFormLayout id="pfl2" inlineStyle="padding:30px;">
+            <af:inputListOfValues id="processNameId"
+                                  popupTitle="Search and Select: #{bindings.ProcessName.hints.label}"
+                                  value="#{bindings.ProcessName.inputValue}"
+                                  label="Section Name"
+                                  model="#{bindings.ProcessName.listOfValuesModel}"
+                                  required="#{bindings.ProcessName.hints.mandatory}"
+                                  columns="#{bindings.ProcessName.hints.displayWidth}"
+                                  shortDesc="#{bindings.ProcessName.hints.tooltip}"
+                                  autoSubmit="true">
+              <!--<f:validator binding="#{bindings.ProcessName.validator}"/>-->
+              <af:autoSuggestBehavior suggestedItems="#{bindings.ProcessName.suggestedItems}"/>
+            </af:inputListOfValues>
+            <af:inputText value="#{bindings.ProcessId.inputValue}"
+                          label="#{bindings.ProcessId.hints.label}"
+                          required="#{bindings.ProcessId.hints.mandatory}"
+                          columns="#{bindings.ProcessId.hints.displayWidth}"
+                          maximumLength="#{bindings.ProcessId.hints.precision}"
+                          shortDesc="#{bindings.ProcessId.hints.tooltip}"
+                          partialTriggers="processNameId" id="it5"
+                          rendered="false">
+              <f:validator binding="#{bindings.ProcessId.validator}"/>
+              <af:convertNumber groupingUsed="false"
+                                pattern="#{bindings.ProcessId.format}"/>
+            </af:inputText>
+            <af:inputText value="#{bindings.SubProcessName.inputValue}"
+                          label="Sub Process Name"
+                          required="#{bindings.SubProcessName.hints.mandatory}"
+                          columns="#{bindings.SubProcessName.hints.displayWidth}"
+                          maximumLength="#{bindings.SubProcessName.hints.precision}"
+                          shortDesc="#{bindings.SubProcessName.hints.tooltip}"
+                          id="it3">
+              <f:validator binding="#{bindings.SubProcessName.validator}"/>
+            </af:inputText>
+            <af:inputText value="#{bindings.TimeRequired.inputValue}"
+                          label="SAM"
+                          required="#{bindings.TimeRequired.hints.mandatory}"
+                          columns="#{bindings.TimeRequired.hints.displayWidth}"
+                          maximumLength="#{bindings.TimeRequired.hints.precision}"
+                          shortDesc="#{bindings.TimeRequired.hints.tooltip}"
+                          id="it6">
+              <f:validator binding="#{bindings.TimeRequired.validator}"/>
+              <af:convertNumber groupingUsed="false"
+                                pattern="#{bindings.TimeRequired.format}"/>
+            </af:inputText>
+            <af:inputText value="#{bindings.ProcessEfficiency.inputValue}"
+                          label="Process Efficiency"
+                          required="#{bindings.ProcessEfficiency.hints.mandatory}"
+                          columns="#{bindings.ProcessEfficiency.hints.displayWidth}"
+                          maximumLength="#{bindings.ProcessEfficiency.hints.precision}"
+                          shortDesc="#{bindings.ProcessEfficiency.hints.tooltip}"
+                          id="it1">
+              <f:validator binding="#{bindings.ProcessEfficiency.validator}"/>
+              <af:convertNumber groupingUsed="false"
+                                pattern="#{bindings.ProcessEfficiency.format}"/>
+            </af:inputText>
+            <af:commandButton actionListener="#{bindings.Commit.execute}"
+                              text="Save" id="cb1"
+                              rendered="true" disabled="false"/>
+          </af:panelFormLayout>
+        </af:panelFormLayout>
+      </af:form>
+    </af:document>
+  </f:view>
+</jsp:root>

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.62.29" id="insertPageDef"
+                Package="view.pageDefs">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="XxOmWashCostSubProcessT_VO1" RangeSize="25"
+              DataControl="AppModuleDataControl"
+              id="XxOmWashCostSubProcessT_VO1Iterator"/>
+  </executables>
+  <bindings>
+    <listOfValues StaticList="false"
+                  IterBinding="XxOmWashCostSubProcessT_VO1Iterator"
+                  Uses="LOV_ProcessName" id="ProcessName"/>
+    <attributeValues IterBinding="XxOmWashCostSubProcessT_VO1Iterator"
+                     id="ProcessId">
+      <AttrNames>
+        <Item Value="ProcessId"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="XxOmWashCostSubProcessT_VO1Iterator"
+                     id="TimeRequired">
+      <AttrNames>
+        <Item Value="TimeRequired"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="XxOmWashCostSubProcessT_VO1Iterator"
+                     id="ProcessEfficiency">
+      <AttrNames>
+        <Item Value="ProcessEfficiency"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="XxOmWashCostSubProcessT_VO1Iterator"
+                     id="SubProcessName">
+      <AttrNames>
+        <Item Value="SubProcessName"/>
+      </AttrNames>
+    </attributeValues>
+    <action id="Commit" RequiresUpdateModel="true" Action="commitTransaction"
+            DataControl="AppModuleDataControl"/>
+  </bindings>
+</pageDefinition>

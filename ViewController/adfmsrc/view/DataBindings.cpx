@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Application xmlns="http://xmlns.oracle.com/adfm/application"
+             version="11.1.1.62.29" id="DataBindings" SeparateXMLFiles="false"
+             Package="view" ClientType="Generic">
+  <pageMap>
+    <page path="/View.jspx" usageId="view_ViewPageDef"/>
+    <page path="/insert.jspx" usageId="view_insertPageDef"/>
+    <page path="/WEB-INF/task-flow-definition.xml#task-flow-definition@CreateInsert"
+          usageId="view_task_flow_definition_task_flow_definition_CreateInsertPageDef"/>
+    <page path="/details_chemical.jspx" usageId="view_details_chemicalPageDef"/>
+  </pageMap>
+  <pageDefinitionUsages>
+    <page id="view_ViewPageDef" path="view.pageDefs.ViewPageDef"/>
+    <page id="view_insertPageDef" path="view.pageDefs.insertPageDef"/>
+    <page id="view_task_flow_definition_task_flow_definition_CreateInsertPageDef"
+          path="view.pageDefs.task_flow_definition_task_flow_definition_CreateInsertPageDef"/>
+    <page id="view_details_chemicalPageDef"
+          path="view.pageDefs.details_chemicalPageDef"/>
+  </pageDefinitionUsages>
+  <dataControlUsages>
+    <BC4JDataControl id="AppModuleDataControl" Package="model.view"
+                     FactoryClass="oracle.adf.model.bc4j.DataControlFactoryImpl"
+                     SupportsTransactions="true" SupportsFindMode="true"
+                     SupportsRangesize="true" SupportsResetState="true"
+                     SupportsSortCollection="true"
+                     Configuration="AppModuleLocal" syncMode="Immediate"
+                     xmlns="http://xmlns.oracle.com/adfm/datacontrol"/>
+  </dataControlUsages>
+</Application>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.62.29"
+                id="task_flow_definition_task_flow_definition_CreateInsertPageDef"
+                Package="view.pageDefs" SkipValidation="true">
+  <parameters/>
+  <executables>
+    <iterator Binds="XxOmWashCostSubProcessT_VO1" RangeSize="25"
+              DataControl="AppModuleDataControl"
+              id="XxOmWashCostSubProcessT_VO1Iterator"/>
+  </executables>
+  <bindings>
+    <action IterBinding="XxOmWashCostSubProcessT_VO1Iterator" id="CreateInsert"
+            RequiresUpdateModel="true" Action="createInsertRow"/>
+  </bindings>
+</pageDefinition>

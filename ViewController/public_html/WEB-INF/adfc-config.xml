@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+  <view id="View">
+    <page>/View.jspx</page>
+    <input-page-parameter>
+      <from-value>#{param.ParamOrgId}</from-value>
+      <to-value>#{viewScope.OrgId}</to-value>
+    </input-page-parameter>
+    <input-page-parameter>
+      <from-value>#{param.ParamUserId}</from-value>
+      <to-value>#{viewScope.UserId}</to-value>
+    </input-page-parameter>
+    <input-page-parameter>
+      <from-value>#{param.ParamRespId}</from-value>
+      <to-value>#{viewScope.RespId}</to-value>
+    </input-page-parameter>
+    <input-page-parameter>
+      <from-value>#{param.ParamRespAppId}</from-value>
+      <to-value>#{viewScope.RespAppId}</to-value>
+    </input-page-parameter>
+  </view>
+  <view id="insert">
+    <page>/insert.jspx</page>
+  </view>
+  <view id="details_chemical">
+    <page>/details_chemical.jspx</page>
+  </view>
+  <control-flow-rule id="__1">
+    <from-activity-id id="__2">View</from-activity-id>
+    <control-flow-case id="__3">
+      <from-outcome id="__5">goToInsertData</from-outcome>
+      <to-activity-id id="__4">insert</to-activity-id>
+    </control-flow-case>
+    <control-flow-case id="__15">
+      <from-outcome id="__17">gotoDetails</from-outcome>
+      <to-activity-id id="__16">details_chemical</to-activity-id>
+    </control-flow-case>
+  </control-flow-rule>
+  <control-flow-rule id="__6">
+    <from-activity-id id="__7">insert</from-activity-id>
+    <control-flow-case id="__9">
+      <from-outcome id="__10">goToViewData</from-outcome>
+      <to-activity-id id="__8">View</to-activity-id>
+    </control-flow-case>
+  </control-flow-rule>
+  <control-flow-rule id="__18">
+    <from-activity-id id="__19">details_chemical</from-activity-id>
+    <control-flow-case id="__20">
+      <from-outcome id="__22">*backhomePg</from-outcome>
+      <to-activity-id id="__21">View</to-activity-id>
+    </control-flow-case>
+  </control-flow-rule>
+  <managed-bean id="__14">
+    <managed-bean-name id="__12">manageBean</managed-bean-name>
+    <managed-bean-class id="__13">ManageBean</managed-bean-class>
+    <managed-bean-scope id="__11">request</managed-bean-scope>
+  </managed-bean>
+</adfc-config>

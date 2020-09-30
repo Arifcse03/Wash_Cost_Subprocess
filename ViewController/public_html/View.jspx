@@ -1,0 +1,252 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:h="http://java.sun.com/jsf/html"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich">
+  <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+  <f:view>
+    <af:document id="d1">
+      <af:messages id="m1"/>
+      <af:form id="f1">
+        <af:panelHeader text=" " id="ph1"
+                        inlineStyle="height:100px; width:auto; margin:10px; text-align:center;"
+                        type="stretch">
+          <f:facet name="context"/>
+          <f:facet name="menuBar"/>
+          <f:facet name="toolbar"/>
+          <f:facet name="legend">
+            <af:outputText value="WASH SUB PROCESS" id="ot9"
+                           inlineStyle="color:Black; font-family:'Times New Roman', 'Arial Black', times, Serif; font-size:large;"/>
+          </f:facet>
+          <f:facet name="info"/>
+        </af:panelHeader>
+        <af:panelCollection id="pc1"
+                            inlineStyle="width:auto; margin:15px; height:500px;">
+          <f:facet name="menus"/>
+          <f:facet name="toolbar">
+            <af:toolbar id="t1">
+              <af:commandButton actionListener="#{bindings.Commit.execute}" id="cb4"
+                                useWindow="true" disabled="false"
+                                icon="/save.png" shortDesc="Save All"/>
+              <af:commandButton text=""
+                                disabled="#{!bindings.CreateInsert.enabled}"
+                                id="cb5" icon="/add.jpg"
+                                shortDesc="Insert New Data">
+                <af:showPopupBehavior popupId="::p1"/>
+              </af:commandButton>
+            </af:toolbar>
+          </f:facet>
+          <f:facet name="statusbar"/>
+          <af:table value="#{bindings.XxOmWashCostSubProcessT_VO1.collectionModel}"
+                    var="row"
+                    rows="#{bindings.XxOmWashCostSubProcessT_VO1.rangeSize}"
+                    emptyText="#{bindings.XxOmWashCostSubProcessT_VO1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                    fetchSize="#{bindings.XxOmWashCostSubProcessT_VO1.rangeSize}"
+                    rowBandingInterval="0"
+                    filterModel="#{bindings.XxOmWashCostSubProcessT_VO1Query.queryDescriptor}"
+                    queryListener="#{bindings.XxOmWashCostSubProcessT_VO1Query.processQuery}"
+                    filterVisible="true" varStatus="vs"
+                    selectedRowKeys="#{bindings.XxOmWashCostSubProcessT_VO1.collectionModel.selectedRow}"
+                    selectionListener="#{bindings.XxOmWashCostSubProcessT_VO1.collectionModel.makeCurrent}"
+                    rowSelection="single" id="t2"
+                    
+                    inlineStyle="text-align:center; padding:0%; background-color:White;"
+                    binding="#{manageBean.refreshTable1}"
+                    partialTriggers="cb3 cb2 cb6" width="100%"
+                    editingMode="clickToEdit">
+            <af:column headerText="#{bindings.XxOmWashCostSubProcessT_VO1.hints.Id.label}"
+                       id="c23" visible="false" inlineStyle="color:Background;">
+              <af:outputText value="#{row.Id}" id="ot22" visible="true">
+                <af:convertNumber groupingUsed="false"
+                                  pattern="#{bindings.XxOmWashCostSubProcessT_VO1.hints.Id.format}"/>
+              </af:outputText>
+            </af:column>
+            <af:column id="c9" headerText="Serial"
+                       inlineStyle="text-align:center; color:Black;"
+                       align="center">
+            <af:outputText id="ot13" value="#{vs.index+1}"/>
+            </af:column>
+            <af:column headerText="Section Name" id="c8" align="center"
+                       inlineStyle="color:Black; font-family:'Times New Roman', 'Arial Black', times, Serif;">
+              <af:outputText value="#{row.ProcessName}" id="ot7"/>
+            </af:column>
+            <af:column sortProperty="SubProcessName" filterable="true"
+                       sortable="true" headerText="Sub Process" id="c6"
+                       inlineStyle="text-align:center; color:Black; font-family:'Times New Roman', 'Arial Black', times, Serif;"
+                       align="center">
+              <af:outputText value="#{row.SubProcessName}" id="ot1"/>
+            </af:column>
+            <af:column sortProperty="TimeRequired" filterable="true"
+                       sortable="true"
+                       headerText="SAM"
+                       id="c4"
+                       inlineStyle="text-align:center; color:Black; font-family:'Times New Roman', 'Arial Black', times, Serif;"
+                       align="center">
+              <af:outputText value="#{row.TimeRequired}" id="ot6">
+                <af:convertNumber groupingUsed="false"
+                                  pattern="#{bindings.XxOmWashCostSubProcessT_VO1.hints.TimeRequired.format}"/>
+              </af:outputText>
+            </af:column>
+            <af:column sortProperty="ProcessEfficiency" filterable="true"
+                       sortable="true"
+                       headerText="Process Efficiency"
+                       id="c5"
+                       inlineStyle="text-align:center; color:Black; font-family:'Times New Roman', 'Arial Black', times, Serif;"
+                       align="center">
+              <af:outputText value="#{row.ProcessEfficiency}" id="ot5">
+                <af:convertNumber groupingUsed="false"
+                                  pattern="#{bindings.XxOmWashCostSubProcessT_VO1.hints.ProcessEfficiency.format}"/>
+              </af:outputText>
+            </af:column>
+            <af:column sortProperty="CreatedBy" filterable="true"
+                       sortable="true"
+                       headerText="Created By"
+                       id="c2"
+                       inlineStyle="text-align:center; color:Black; font-family:'Times New Roman', 'Arial Black', times, Serif;"
+                       align="center">
+              <af:outputText value="#{row.CreatedBy}" id="ot8">
+                <af:convertNumber groupingUsed="false"
+                                  pattern="#{bindings.XxOmWashCostSubProcessT_VO1.hints.CreatedBy.format}"/>
+              </af:outputText>
+            </af:column>
+            <af:column sortProperty="CreationDate" filterable="true"
+                       sortable="true"
+                       headerText="Creation Date"
+                       id="c1"
+                       inlineStyle="text-align:center; color:Black; font-family:'Times New Roman', 'Arial Black', times, Serif;"
+                       align="center">
+              <f:facet name="filter">
+                <af:inputDate value="#{vs.filterCriteria.CreationDate}"
+                              id="id2"/>
+              </f:facet>
+              <af:outputText value="#{row.CreationDate}" id="ot2">
+                <af:convertDateTime pattern="#{bindings.XxOmWashCostSubProcessT_VO1.hints.CreationDate.format}"/>
+              </af:outputText>
+            </af:column>
+            <af:column sortProperty="UpdatedBy" filterable="true"
+                       sortable="true"
+                       headerText="Updated By"
+                       id="c7"
+                       inlineStyle="text-align:center; color:Black; font-family:'Times New Roman', 'Arial Black', times, Serif;"
+                       align="center">
+              <af:outputText value="#{row.UpdatedBy}" id="ot3">
+                <af:convertNumber groupingUsed="false"
+                                  pattern="#{bindings.XxOmWashCostSubProcessT_VO1.hints.UpdatedBy.format}"/>
+              </af:outputText>
+            </af:column>
+            <af:column sortProperty="UpdatedDate" filterable="true"
+                       sortable="true"
+                       headerText="Update Date"
+                       id="c3"
+                       inlineStyle="text-align:center; color:Black; font-family:'Times New Roman', 'Arial Black', times, Serif;"
+                       align="center">
+              <f:facet name="filter">
+                <af:inputDate value="#{vs.filterCriteria.UpdatedDate}"
+                              id="id1"/>
+              </f:facet>
+              <af:outputText value="#{row.UpdatedDate}" id="ot4">
+                <af:convertDateTime pattern="#{bindings.XxOmWashCostSubProcessT_VO1.hints.UpdatedDate.format}"/>
+              </af:outputText>
+            </af:column>
+            <af:column id="c10" headerText="Action" align="center"
+                       width="252px"
+                       inlineStyle="width:auto; color:Black; font-family:'Times New Roman', 'Arial Black', times, Serif;">
+              <af:panelGroupLayout id="pgl1" layout="horizontal"
+                                   inlineStyle="width:auto;">
+                <af:commandButton actionListener="#{bindings.setCurrentRowWithKeyValue.execute}"
+                                  disabled="#{!bindings.setCurrentRowWithKeyValue.enabled}"
+                                  id="cb2" action="goToInsertData"
+                                  inlineStyle="margin:5px;" icon="/edit.png"
+                                  shortDesc="Edit This Row"/>
+                <af:commandButton actionListener="#{bindings.Delete.execute}"
+                                  disabled="#{!bindings.Delete.enabled}"
+                                  id="cb3" icon="/delete-.png"
+                                  shortDesc="Delete The Row Data">
+                 
+                </af:commandButton>
+                <af:commandButton text=" " id="cb6" action="gotoDetails"
+                inlineStyle="margin:5px;"
+                                  icon="/view-details_318-1493.jpg" shortDesc="SHow Detail "/>
+              </af:panelGroupLayout>
+            </af:column>
+          </af:table>
+        </af:panelCollection>
+        <af:popup id="p1" popupFetchListener="#{manageBean.OnCreate}">
+          <af:dialog id="d2" title="Insert Sub Process"
+                     dialogListener="#{manageBean.ondialogOk}"
+                     inlineStyle="width:50.0px;">
+            <af:panelFormLayout id="pfl2"
+                                inlineStyle="margin:30px; padding:10px;">
+              <af:inputText value="#{bindings.Id.inputValue}"
+                            label="#{bindings.Id.hints.label}"
+                            required="#{bindings.Id.hints.mandatory}"
+                            columns="#{bindings.Id.hints.displayWidth}"
+                            maximumLength="#{bindings.Id.hints.precision}"
+                            shortDesc="#{bindings.Id.hints.tooltip}" id="it5"
+                            rendered="false">
+                <f:validator binding="#{bindings.Id.validator}"/>
+                <af:convertNumber groupingUsed="false"
+                                  pattern="#{bindings.Id.format}"/>
+              </af:inputText>
+              <af:inputListOfValues id="processNameId"
+                                    popupTitle="Search and Select: #{bindings.ProcessName.hints.label}"
+                                    value="#{bindings.ProcessName.inputValue}"
+                                    label="Section Name"
+                                    model="#{bindings.ProcessName.listOfValuesModel}"
+                                    required="#{bindings.ProcessName.hints.mandatory}"
+                                    columns="#{bindings.ProcessName.hints.displayWidth}"
+                                    shortDesc="#{bindings.ProcessName.hints.tooltip}"
+                                    autoSubmit="true">
+                <!--<f:validator binding="#{bindings.ProcessName.validator}"/>-->
+                <af:autoSuggestBehavior suggestedItems="#{bindings.ProcessName.suggestedItems}"/>
+              </af:inputListOfValues>
+              <af:inputText value="#{bindings.SubProcessName.inputValue}"
+                            label="Sub Process Name"
+                            required="#{bindings.SubProcessName.hints.mandatory}"
+                            columns="#{bindings.SubProcessName.hints.displayWidth}"
+                            maximumLength="#{bindings.SubProcessName.hints.precision}"
+                            shortDesc="#{bindings.SubProcessName.hints.tooltip}"
+                            id="it4">
+                <f:validator binding="#{bindings.SubProcessName.validator}"/>
+              </af:inputText>
+              <af:inputText value="#{bindings.ProcessId.inputValue}"
+                            label="#{bindings.ProcessId.hints.label}"
+                            required="#{bindings.ProcessId.hints.mandatory}"
+                            columns="#{bindings.ProcessId.hints.displayWidth}"
+                            maximumLength="#{bindings.ProcessId.hints.precision}"
+                            shortDesc="#{bindings.ProcessId.hints.tooltip}"
+                            partialTriggers="processNameId" id="it3"
+                            rendered="false">
+                <f:validator binding="#{bindings.ProcessId.validator}"/>
+                <af:convertNumber groupingUsed="false"
+                                  pattern="#{bindings.ProcessId.format}"/>
+              </af:inputText>
+              <af:inputText value="#{bindings.TimeRequired.inputValue}"
+                            label="SAM"
+                            required="#{bindings.TimeRequired.hints.mandatory}"
+                            columns="#{bindings.TimeRequired.hints.displayWidth}"
+                            maximumLength="#{bindings.TimeRequired.hints.precision}"
+                            shortDesc="#{bindings.TimeRequired.hints.tooltip}"
+                            id="it1">
+                <f:validator binding="#{bindings.TimeRequired.validator}"/>
+                <af:convertNumber groupingUsed="false"
+                                  pattern="#{bindings.TimeRequired.format}"/>
+              </af:inputText>
+              <af:inputText value="#{bindings.ProcessEfficiency.inputValue}"
+                            label="Process Efficiency"
+                            required="#{bindings.ProcessEfficiency.hints.mandatory}"
+                            columns="#{bindings.ProcessEfficiency.hints.displayWidth}"
+                            maximumLength="#{bindings.ProcessEfficiency.hints.precision}"
+                            shortDesc="#{bindings.ProcessEfficiency.hints.tooltip}"
+                            id="it2">
+                <f:validator binding="#{bindings.ProcessEfficiency.validator}"/>
+                <af:convertNumber groupingUsed="false"
+                                  pattern="#{bindings.ProcessEfficiency.format}"/>
+              </af:inputText>
+            </af:panelFormLayout>
+          </af:dialog>
+        </af:popup>
+      </af:form>
+    </af:document>
+  </f:view>
+</jsp:root>

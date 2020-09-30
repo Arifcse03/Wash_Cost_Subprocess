@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.62.29" id="details_chemicalPageDef"
+                Package="view.pageDefs">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="XxOmWashCostChemicalTVO1" RangeSize="25"
+              DataControl="AppModuleDataControl"
+              id="XxOmWashCostChemicalTVO1Iterator"/>
+    <searchRegion Binds="XxOmWashCostChemicalTVO1Iterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="XxOmWashCostChemicalTVO1Query"/>
+    <invokeAction id="SetSessionid" Binds="setSessionValues" Refresh="always"/>
+  </executables>
+  <bindings>
+    <action id="Commit" RequiresUpdateModel="true" Action="commitTransaction"
+            DataControl="AppModuleDataControl"/>
+    <action IterBinding="XxOmWashCostChemicalTVO1Iterator" id="CreateInsert"
+            InstanceName="AppModuleDataControl.XxOmWashCostChemicalTVO1"
+            DataControl="AppModuleDataControl" RequiresUpdateModel="true"
+            Action="createInsertRow"/>
+    <tree IterBinding="XxOmWashCostChemicalTVO1Iterator"
+          id="XxOmWashCostChemicalTVO1">
+      <nodeDefinition DefName="model.view.XxOmWashCostChemicalTVO"
+                      Name="XxOmWashCostChemicalTVO10">
+        <AttrNames>
+          <Item Value="Id"/>
+          <Item Value="SubProcessName"/>
+          <Item Value="SubProcessId"/>
+          <Item Value="ItemCode"/>
+          <Item Value="ItemName"/>
+          <Item Value="Quantity"/>
+          <Item Value="CreatedBy"/>
+          <Item Value="CreationDate"/>
+          <Item Value="UpdatedBy"/>
+          <Item Value="UpdatedDate"/>
+          <Item Value="ManualPrice"/>
+          <Item Value="Test"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <listOfValues StaticList="false"
+                  IterBinding="XxOmWashCostChemicalTVO1Iterator"
+                  Uses="LOV_SubProcessName" id="SubProcessName"/>
+    <listOfValues StaticList="false"
+                  IterBinding="XxOmWashCostChemicalTVO1Iterator"
+                  Uses="LOV_ItemName" id="ItemName"/>
+    <attributeValues IterBinding="XxOmWashCostChemicalTVO1Iterator"
+                     id="SubProcessId">
+      <AttrNames>
+        <Item Value="SubProcessId"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="XxOmWashCostChemicalTVO1Iterator"
+                     id="Quantity">
+      <AttrNames>
+        <Item Value="Quantity"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="XxOmWashCostChemicalTVO1Iterator"
+                     id="ManualPrice">
+      <AttrNames>
+        <Item Value="ManualPrice"/>
+      </AttrNames>
+    </attributeValues>
+    <action id="Commit1" DataControl="AppModuleDataControl"
+            RequiresUpdateModel="true" Action="commitTransaction"/>
+    <action id="Rollback" DataControl="AppModuleDataControl"
+            RequiresUpdateModel="false" Action="rollbackTransaction"/>
+    <action IterBinding="XxOmWashCostChemicalTVO1Iterator" id="Delete"
+            RequiresUpdateModel="false" Action="removeCurrentRow"/>
+    <methodAction id="setSessionValues"
+                  InstanceName="AppModuleDataControl.dataProvider"
+                  DataControl="AppModuleDataControl" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="setSessionValues"
+                  IsViewObjectMethod="false">
+      <NamedData NDName="orgId" NDValue="#{viewScope.OrgId}"
+                 NDType="java.lang.String"/>
+      <NamedData NDName="userId" NDValue="#{viewScope.UserId}"
+                 NDType="java.lang.String"/>
+      <NamedData NDName="respId" NDValue="#{viewScope.RespId}"
+                 NDType="java.lang.String"/>
+      <NamedData NDName="respAppl" NDValue="#{viewScope.RespAppId}"
+                 NDType="java.lang.String"/>
+    </methodAction>
+  </bindings>
+</pageDefinition>

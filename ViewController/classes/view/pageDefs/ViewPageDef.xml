@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.62.29" id="ViewPageDef" Package="view.pageDefs">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="XxOmWashCostSubProcessT_VO1" RangeSize="25"
+              DataControl="AppModuleDataControl"
+              id="XxOmWashCostSubProcessT_VO1Iterator"/>
+    <searchRegion Binds="XxOmWashCostSubProcessT_VO1Iterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="XxOmWashCostSubProcessT_VO1Query"/>
+    <invokeAction id="setSessionId" Binds="setSessionValues" Refresh="always"/>
+  </executables>
+  <bindings>
+    <action IterBinding="XxOmWashCostSubProcessT_VO1Iterator" id="CreateInsert"
+            RequiresUpdateModel="true" Action="createInsertRow"/>
+    <tree IterBinding="XxOmWashCostSubProcessT_VO1Iterator"
+          id="XxOmWashCostSubProcessT_VO1">
+      <nodeDefinition DefName="model.view.XxOmWashCostSubProcessT_VO"
+                      Name="XxOmWashCostSubProcessT_VO10">
+        <AttrNames>
+          <Item Value="BuyerId"/>
+          <Item Value="TimeRequired"/>
+          <Item Value="ProcessEfficiency"/>
+          <Item Value="SubProcessName"/>
+          <Item Value="CreatedBy"/>
+          <Item Value="CreationDate"/>
+          <Item Value="UpdatedBy"/>
+          <Item Value="UpdatedDate"/>
+          <Item Value="ProcessName"/>
+          <Item Value="Id"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <action IterBinding="XxOmWashCostSubProcessT_VO1Iterator"
+            id="setCurrentRowWithKeyValue" RequiresUpdateModel="false"
+            Action="setCurrentRowWithKeyValue">
+      <NamedData NDName="rowKey" NDType="java.lang.String" NDValue="#{row.Id}"/>
+    </action>
+    <action IterBinding="XxOmWashCostSubProcessT_VO1Iterator" id="Delete"
+            RequiresUpdateModel="false" Action="removeCurrentRow"/>
+    <action id="Commit" RequiresUpdateModel="true" Action="commitTransaction"
+            DataControl="AppModuleDataControl"/>
+    <listOfValues StaticList="false"
+                  IterBinding="XxOmWashCostSubProcessT_VO1Iterator"
+                  Uses="LOV_ProcessName" id="ProcessName"/>
+    <attributeValues IterBinding="XxOmWashCostSubProcessT_VO1Iterator" id="Id">
+      <AttrNames>
+        <Item Value="Id"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="XxOmWashCostSubProcessT_VO1Iterator"
+                     id="ProcessId">
+      <AttrNames>
+        <Item Value="ProcessId"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="XxOmWashCostSubProcessT_VO1Iterator"
+                     id="TimeRequired">
+      <AttrNames>
+        <Item Value="TimeRequired"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="XxOmWashCostSubProcessT_VO1Iterator"
+                     id="ProcessEfficiency">
+      <AttrNames>
+        <Item Value="ProcessEfficiency"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="XxOmWashCostSubProcessT_VO1Iterator"
+                     id="SubProcessName">
+      <AttrNames>
+        <Item Value="SubProcessName"/>
+      </AttrNames>
+    </attributeValues>
+    <methodAction id="setSessionValues"
+                  InstanceName="AppModuleDataControl.dataProvider"
+                  DataControl="AppModuleDataControl" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="setSessionValues"
+                  IsViewObjectMethod="false">
+      <NamedData NDName="orgId" NDValue="#{viewScope.OrgId}"
+                 NDType="java.lang.String"/>
+      <NamedData NDName="userId" NDValue="#{viewScope.UserId}"
+                 NDType="java.lang.String"/>
+      <NamedData NDName="respId" NDValue="#{viewScope.RespId}"
+                 NDType="java.lang.String"/>
+      <NamedData NDName="respAppl" NDValue="#{viewScope.RespAppId}"
+                 NDType="java.lang.String"/>
+    </methodAction>
+  </bindings>
+</pageDefinition>
